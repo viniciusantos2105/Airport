@@ -1,6 +1,8 @@
 package com.example.airport.config;
 
+import com.example.airport.dto.airport.AirportViewDTO;
 import com.example.airport.dto.flight.FlightClassViewDTO;
+import com.example.airport.models.Airport;
 import com.example.airport.models.FlightClass;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +17,9 @@ public class MapperConfig {
 //        mapper.createTypeMap(FlightClass.class, FlightClassViewDTO.class)
 //                .addMappings(m -> m.map(src -> src.getClassEnum().getDescription(), FlightClassViewDTO::setClassEnum))
 //                .addMappings(m -> m.map(FlightClass::getSeats, FlightClassViewDTO::setSeats));
+        mapper.createTypeMap(Airport.class, AirportViewDTO.class)
+                .addMappings(m -> m.map(src -> src.getCityAirport().getNameCity(), AirportViewDTO::setCityAirport))
+                .addMappings(m -> m.map(Airport::getNameAirport, AirportViewDTO::setNameAirport));
         return mapper;
     }
 }
