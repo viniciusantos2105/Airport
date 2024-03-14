@@ -21,9 +21,12 @@ public class FlightClass {
     private FlightClassEnum classEnum;
     @Column(name = "seats", nullable = false)
     private Integer seats;
+    @Column(name = "value", nullable = false)
+    private Double valueClass;
 
-    public FlightClass(FlightClassEnum classEnum, Integer seats) {
+    public FlightClass(FlightClassEnum classEnum, Integer seats, Double valueClass) {
         this.classEnum = classEnum;
         this.seats = seats;
+        this.valueClass = valueClass;
     }
 }

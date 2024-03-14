@@ -15,12 +15,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FlightRegisterDTO {
-    @NotNull(message = "Não pode ser vazio")
+    @NotNull(message = "Local de origem não pode ser vazio")
     private Long originAirportId;
-    @NotNull(message = "Nao pode ser vazio")
+    @NotNull(message = "Local de destino não pode ser vazio")
     private Long destinationAirportId;
-    @NotBlank(message = "Não pode ser vazio")
+    @NotBlank(message = "Horario não pode ser vazio")
     private String departureDateTime;
-    @NotEmpty(message = "Não pode ser nulo")
-    private List<FlightClassDTO> flightClassDTOS;
+    @NotEmpty(message = "Os voos devem possuir pelo menos uma classe")
+    private List<FlightClassRegisterDTO> flightClassDTOS;
 }

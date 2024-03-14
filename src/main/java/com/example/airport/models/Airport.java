@@ -27,11 +27,17 @@ public class Airport {
     @JoinColumn(name = "city_airport", nullable = false)
     private City cityAirport;
 
-    @OneToMany
-    @JoinTable(name = "flights_airport",
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "flights_origin_airport",
         joinColumns = @JoinColumn(name = "code_iata_airport"),
         inverseJoinColumns = @JoinColumn(name = "flight_number"))
-    private Set<Flight> flights;
+    private Set<Flight> originFlights ;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "flights_destination_airport",
+            joinColumns = @JoinColumn(name = "code_iata_airport"),
+            inverseJoinColumns = @JoinColumn(name = "flight_number"))
+    private Set<Flight> destinationFlights;
 
     public Airport(String nameAirport, City cityAirport) {
         this.nameAirport = nameAirport;

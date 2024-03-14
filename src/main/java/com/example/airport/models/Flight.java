@@ -38,6 +38,13 @@ public class Flight {
         joinColumns = @JoinColumn(name = "flight_number"))
     private List<FlightClass> flightClasses = new ArrayList<>();
 
+    @PrePersist
+    public void beforeSave() {
+        if (originAirport != null && destinationAirport != null) {
+            originAirport.getOriginFlights().add(this);
+            destinationAirport.getDestinationFlights().add(this);
+        }
+    }
 
     public void addFlightClass(FlightClass flightClass){
         flightClasses.add(flightClass);

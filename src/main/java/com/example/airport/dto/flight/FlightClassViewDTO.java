@@ -14,5 +14,5 @@ public class FlightClassViewDTO {
 
     private String classEnum;
     private Integer seats;
-
+    private Double valueClass;
 }

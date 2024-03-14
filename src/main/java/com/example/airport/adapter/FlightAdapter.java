@@ -17,7 +17,7 @@ public class FlightAdapter {
     public FlightViewDTO adapterRegisterFlight(Flight flight){
         FlightViewDTO flightViewDTO =  mapper.map(flight, FlightViewDTO.class);
         for(FlightClass flightClass : flight.getFlightClasses()){
-            FlightClassViewDTO classViewDTO = new FlightClassViewDTO(flightClass.getClassEnum().getDescription(), flightClass.getSeats());
+            FlightClassViewDTO classViewDTO = new FlightClassViewDTO(flightClass.getClassEnum().getDescription(), flightClass.getSeats(), flightClass.getValueClass());
             flightViewDTO.getFlightClassViewDTO().add(classViewDTO);
         }
         return flightViewDTO;

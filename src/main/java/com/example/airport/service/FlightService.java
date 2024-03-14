@@ -1,7 +1,7 @@
 package com.example.airport.service;
 
 import com.example.airport.adapter.FlightAdapter;
-import com.example.airport.dto.flight.FlightClassDTO;
+import com.example.airport.dto.flight.FlightClassRegisterDTO;
 import com.example.airport.dto.flight.FlightRegisterDTO;
 import com.example.airport.dto.flight.FlightViewDTO;
 import com.example.airport.enums.FlightClassEnum;
@@ -9,10 +9,8 @@ import com.example.airport.models.Airport;
 import com.example.airport.models.Flight;
 import com.example.airport.models.FlightClass;
 import com.example.airport.repository.FlightRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -25,14 +23,14 @@ public class FlightService {
     private final FlightRepository flightRepository;
 
     private final AirportService airportService;
-    @Autowired
-    private  FlightAdapter flightAdapter;
+    private final FlightAdapter flightAdapter;
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-    public FlightService(FlightRepository flightRepository, AirportService airportService) {
+    public FlightService(FlightRepository flightRepository, AirportService airportService, FlightAdapter flightAdapter) {
         this.flightRepository = flightRepository;
         this.airportService = airportService;
+        this.flightAdapter = flightAdapter;
     }
 
     public FlightViewDTO save(FlightRegisterDTO flightRegisterDTO) throws ParseException {
@@ -43,7 +41,7 @@ public class FlightService {
 
         Flight flight = new Flight(originAirport, destinationAirport, flightDateTime);
 
-        for(FlightClassDTO flightClassDTO : flightRegisterDTO.getFlightClassDTOS()){
+        for(FlightClassRegisterDTO flightClassDTO : flightRegisterDTO.getFlightClassDTOS()){
             FlightClass flightClass = parseFlightClass(flightClassDTO);
             flight.getFlightClasses().add(flightClass);
         }
@@ -51,10 +49,10 @@ public class FlightService {
         return flightAdapter.adapterRegisterFlight(flight);
     }
 
-    public FlightClass parseFlightClass(FlightClassDTO flightClassDTO){
+    public FlightClass parseFlightClass(FlightClassRegisterDTO flightClassDTO){
         for(FlightClassEnum flightClassEnum : FlightClassEnum.values()){
             if(flightClassEnum.getDescription().equalsIgnoreCase(flightClassDTO.getClassEnum())){
-               return new FlightClass(flightClassEnum, flightClassDTO.getSeats());
+               return new FlightClass(flightClassEnum, flightClassDTO.getSeats(), flightClassDTO.getValueClass());
             }
         }
         //TODO: TRATAR ESSE RETORNO

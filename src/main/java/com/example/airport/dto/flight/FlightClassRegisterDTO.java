@@ -11,10 +11,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FlightClassDTO {
+public class FlightClassRegisterDTO {
 
     @NotBlank(message = "A classe do voo não pode ser vazia")
     private String classEnum;
-    @NotNull(message = "")
+    @NotNull(message = "Numero de assentos não pode ser vazio")
     private Integer seats;
+    @NotNull(message = "Valor da classe não pode ser vazio")
+    private Double valueClass;
 }
