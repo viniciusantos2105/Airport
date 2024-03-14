@@ -20,4 +20,9 @@ public class City {
     private String nameCity;
     @Column(name = "federative_unit", nullable = false)
     private String federativUnit;
+
+    public City(String nameCity, String federativUnit) {
+        this.nameCity = nameCity;
+        this.federativUnit = federativUnit;
+    }
 }

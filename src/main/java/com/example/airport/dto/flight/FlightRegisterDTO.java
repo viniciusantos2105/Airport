@@ -1,6 +1,7 @@
 package com.example.airport.dto.flight;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +21,6 @@ public class FlightRegisterDTO {
     private Long destinationAirportId;
     @NotBlank(message = "Não pode ser vazio")
     private String departureDateTime;
-    @NotBlank(message = "Não pode ser nulo")
+    @NotEmpty(message = "Não pode ser nulo")
     private List<FlightClassDTO> flightClassDTOS;
 }

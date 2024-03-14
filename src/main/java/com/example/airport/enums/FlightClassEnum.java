@@ -3,7 +3,6 @@ package com.example.airport.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
 public enum FlightClassEnum {
 
@@ -12,4 +11,8 @@ public enum FlightClassEnum {
     CLASSE_A("Classe A");
 
     private final String description;
+
+    public String getDescription() {
+        return description;
+    }
 }

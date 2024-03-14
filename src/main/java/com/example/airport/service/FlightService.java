@@ -1,17 +1,22 @@
 package com.example.airport.service;
 
+import com.example.airport.adapter.FlightAdapter;
 import com.example.airport.dto.flight.FlightClassDTO;
 import com.example.airport.dto.flight.FlightRegisterDTO;
+import com.example.airport.dto.flight.FlightViewDTO;
 import com.example.airport.enums.FlightClassEnum;
 import com.example.airport.models.Airport;
 import com.example.airport.models.Flight;
 import com.example.airport.models.FlightClass;
 import com.example.airport.repository.FlightRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 @Service
@@ -20,6 +25,8 @@ public class FlightService {
     private final FlightRepository flightRepository;
 
     private final AirportService airportService;
+    @Autowired
+    private  FlightAdapter flightAdapter;
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
@@ -28,12 +35,11 @@ public class FlightService {
         this.airportService = airportService;
     }
 
-    public Flight save(FlightRegisterDTO flightRegisterDTO) throws ParseException {
-        Airport destinationAirport = null;
-//                airportService.findById(flightRegisterDTO.getDestinationAirportId());
-        Airport originAirport = null;
-//                airportService.findById(flightRegisterDTO.getOriginAirportId());
+    public FlightViewDTO save(FlightRegisterDTO flightRegisterDTO) throws ParseException {
+        Airport destinationAirport = airportService.findById(flightRegisterDTO.getDestinationAirportId());
+        Airport originAirport = airportService.findById(flightRegisterDTO.getOriginAirportId());
         Date flightDateTime = dateFormat.parse(flightRegisterDTO.getDepartureDateTime());
+        validateFlight(destinationAirport, originAirport, flightDateTime);
 
         Flight flight = new Flight(originAirport, destinationAirport, flightDateTime);
 
@@ -41,7 +47,8 @@ public class FlightService {
             FlightClass flightClass = parseFlightClass(flightClassDTO);
             flight.getFlightClasses().add(flightClass);
         }
-        return flight;
+        flightRepository.save(flight);
+        return flightAdapter.adapterRegisterFlight(flight);
     }
 
     public FlightClass parseFlightClass(FlightClassDTO flightClassDTO){
@@ -54,5 +61,10 @@ public class FlightService {
         return null;
     }
 
-
+    public void validateFlight(Airport destinationAirport, Airport originAirport, Date flightDateTime){
+        //TODO: TRATAR EXCEPTIONS
+        if(destinationAirport.getCityAirport().equals(originAirport.getCityAirport())) throw new RuntimeException("Não podem exisistir voos para a mesma cidade");
+        LocalDateTime flightLocalDateTime = flightDateTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        if(flightLocalDateTime.isBefore(LocalDateTime.now())) throw new RuntimeException("Não podem criar voos em horarios passados");
+    }
 }

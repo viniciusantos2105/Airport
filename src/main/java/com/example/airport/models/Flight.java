@@ -33,8 +33,9 @@ public class Flight {
     @Column(name = "departure_date_time", nullable = false)
     private Date departureDateTime;
 
-    @OneToMany
-    @JoinTable(name = "flight_classes")
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "flight_classes",
+        joinColumns = @JoinColumn(name = "flight_number"))
     private List<FlightClass> flightClasses = new ArrayList<>();
 
 

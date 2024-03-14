@@ -1,6 +1,7 @@
 package com.example.airport.controller;
 
 import com.example.airport.dto.flight.FlightRegisterDTO;
+import com.example.airport.dto.flight.FlightViewDTO;
 import com.example.airport.models.Flight;
 import com.example.airport.service.FlightService;
 import jakarta.validation.Valid;
@@ -20,8 +21,8 @@ public class FlightController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Flight> create(@RequestBody @Valid FlightRegisterDTO flightRegisterDTO) throws ParseException {
-       Flight flight = flightService.save(flightRegisterDTO);
+    public ResponseEntity<FlightViewDTO> create(@RequestBody @Valid FlightRegisterDTO flightRegisterDTO) throws ParseException {
+        FlightViewDTO flight = flightService.save(flightRegisterDTO);
        return ResponseEntity.ok().body(flight);
     }
 }
