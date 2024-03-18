@@ -2,6 +2,7 @@ package com.example.airport.models.users;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
+@MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
 public class Person {
@@ -20,4 +22,6 @@ public class Person {
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
+
+
 }

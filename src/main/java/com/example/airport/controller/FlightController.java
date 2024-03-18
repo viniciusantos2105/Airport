@@ -2,7 +2,6 @@ package com.example.airport.controller;
 
 import com.example.airport.dto.flight.FlightRegisterDTO;
 import com.example.airport.dto.flight.FlightViewDTO;
-import com.example.airport.models.Flight;
 import com.example.airport.service.FlightService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ public class FlightController {
 
     @PostMapping("/create")
     public ResponseEntity<FlightViewDTO> create(@RequestBody @Valid FlightRegisterDTO flightRegisterDTO) throws ParseException {
-        FlightViewDTO flight = flightService.save(flightRegisterDTO);
+        FlightViewDTO flight = flightService.createFlight(flightRegisterDTO);
        return ResponseEntity.ok().body(flight);
     }
 }

@@ -14,7 +14,7 @@ public class CityService {
         this.cityRepository = cityRepository;
     }
 
-    public City save(CityRegisterDTO cityRegisterDto){
+    public City createCity(CityRegisterDTO cityRegisterDto){
         City city = new City(cityRegisterDto.getNameCity(), cityRegisterDto.getFederativUnit());
         return cityRepository.save(city);
     }

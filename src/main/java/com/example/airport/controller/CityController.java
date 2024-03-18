@@ -23,7 +23,7 @@ public class CityController {
 
     @PostMapping("/create")
     public ResponseEntity<City> create(@RequestBody @Valid CityRegisterDTO cityRegisterDTO){
-        City city = cityService.save(cityRegisterDTO);
+        City city = cityService.createCity(cityRegisterDTO);
         return ResponseEntity.ok().body(city);
     }
 }

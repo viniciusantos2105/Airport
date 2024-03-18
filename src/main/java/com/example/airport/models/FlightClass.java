@@ -16,7 +16,7 @@ public class FlightClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idFlightClass;
     @Column(name = "class", nullable = false)
     private FlightClassEnum classEnum;
     @Column(name = "seats", nullable = false)

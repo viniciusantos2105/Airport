@@ -15,7 +15,7 @@ public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCity;
     @Column(name = "name_city", nullable = false)
     private String nameCity;
     @Column(name = "federative_unit", nullable = false)

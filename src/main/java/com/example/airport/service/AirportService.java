@@ -6,7 +6,6 @@ import com.example.airport.dto.airport.AirportViewDTO;
 import com.example.airport.models.Airport;
 import com.example.airport.models.City;
 import com.example.airport.repository.AirportRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +37,7 @@ public class AirportService {
         return airportViewDTOList;
     }
 
-    public Airport save(AirportRegisterDTO airportRegisterDTO){
+    public Airport createAirport(AirportRegisterDTO airportRegisterDTO){
         City city = cityService.findById(airportRegisterDTO.getIdCity());
         Airport airport = new Airport(airportRegisterDTO.getNameAirport(), city);
         return airportRepository.save(airport);

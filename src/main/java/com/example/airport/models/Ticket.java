@@ -17,7 +17,7 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long ticketNumber;
 
     @Column(name = "price", nullable = false)
     private Double price;
@@ -26,6 +26,19 @@ public class Ticket {
     private FlightClassEnum flightClass;
 
     @ManyToOne
+    @JoinColumn(name = "flight", nullable = false)
+    private Flight flight;
+
+    @ManyToOne
     @JoinColumn(name = "visitor", nullable = false)
     private Visitor visitor;
+
+    public Ticket(Double price,Flight flight, FlightClassEnum flightClass, Visitor visitor) {
+        this.price = price;
+        this.flight = flight;
+        this.flightClass = flightClass;
+        this.visitor = visitor;
+    }
+
+
 }

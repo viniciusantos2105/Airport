@@ -23,7 +23,7 @@ public class AirportController {
 
     @PostMapping("/create")
     public ResponseEntity<Airport> create(@RequestBody @Valid AirportRegisterDTO airportRegisterDTO){
-        Airport airport = airportService.save(airportRegisterDTO);
+        Airport airport = airportService.createAirport(airportRegisterDTO);
         return ResponseEntity.ok().body(airport);
     }
 
