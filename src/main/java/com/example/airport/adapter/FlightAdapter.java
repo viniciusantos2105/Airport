@@ -3,6 +3,7 @@ package com.example.airport.adapter;
 import com.example.airport.config.MapperConfig;
 import com.example.airport.dto.flight.FlightClassViewDTO;
 import com.example.airport.dto.flight.FlightViewDTO;
+import com.example.airport.dto.flight.FlightViewListDTO;
 import com.example.airport.models.Flight;
 import com.example.airport.models.FlightClass;
 import org.modelmapper.ModelMapper;
@@ -21,5 +22,9 @@ public class FlightAdapter {
             flightViewDTO.getFlightClassViewDTO().add(classViewDTO);
         }
         return flightViewDTO;
+    }
+
+    public FlightViewListDTO adapterViewListFlight(Flight flight){
+        return mapper.map(flight, FlightViewListDTO.class);
     }
 }
