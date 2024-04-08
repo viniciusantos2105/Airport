@@ -1,6 +1,6 @@
 package com.example.airport.service;
 
-import com.example.airport.adapter.FlightAdapter;
+import com.example.airport.adapter.Adapter;
 import com.example.airport.dto.flight.FlightClassRegisterDTO;
 import com.example.airport.dto.flight.FlightRegisterDTO;
 import com.example.airport.dto.flight.FlightViewDTO;
@@ -25,20 +25,18 @@ public class FlightService {
 
     private final FlightRepository repository;
     private final AirportService airportService;
-    private final FlightAdapter flightAdapter;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-    public FlightService(FlightRepository flightRepository, AirportService airportService, FlightAdapter flightAdapter) {
+    public FlightService(FlightRepository flightRepository, AirportService airportService) {
         this.repository = flightRepository;
         this.airportService = airportService;
-        this.flightAdapter = flightAdapter;
     }
 
     public List<FlightViewListDTO> listFlight(){
         List<Flight> flightList = repository.findAll();
         List<FlightViewListDTO> viewFlightList = new ArrayList<>();
         for(Flight flight : flightList){
-            FlightViewListDTO flightView = flightAdapter.adapterViewListFlight(flight);
+            FlightViewListDTO flightView = Adapter.mapSourceToTarget(flight, FlightViewListDTO.class);
             viewFlightList.add(flightView);
         }
         return viewFlightList;
@@ -58,7 +56,7 @@ public class FlightService {
             flight.getFlightClasses().add(flightClass);
         }
         repository.save(flight);
-        return flightAdapter.adapterRegisterFlight(flight);
+        return Adapter.mapSourceToTarget(flight, FlightViewDTO.class);
     }
 
     private FlightClass parseFlightClass(FlightClassRegisterDTO flightClassDTO){

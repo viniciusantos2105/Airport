@@ -7,6 +7,7 @@ import com.example.airport.dto.visitor.VisitorViewDTO;
 import com.example.airport.models.users.Visitor;
 import com.example.airport.service.FlightService;
 import com.example.airport.service.VisitorService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ public class VisitorController {
         this.visitorService = visitorService;
     }
 
+    @Operation(summary = "Método de criação de visitante")
     @PostMapping("/create")
     public ResponseEntity<VisitorViewDTO> create(@RequestBody @Valid VisitorRegisterDTO visitorRegisterDTO) throws ParseException {
         VisitorViewDTO visitor = visitorService.createVisitor(visitorRegisterDTO);

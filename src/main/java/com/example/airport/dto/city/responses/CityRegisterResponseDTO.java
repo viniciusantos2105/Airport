@@ -1,6 +1,5 @@
-package com.example.airport.dto.city;
+package com.example.airport.dto.city.responses;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,10 +10,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CityRegisterDTO {
+public class CityRegisterResponseDTO {
 
-    @NotBlank(message = "Nome da cidade, não pode ser vazio")
     private String nameCity;
-    @NotBlank(message = "Unidade federativa não pode ser vazia")
     private String federativUnit;
 }

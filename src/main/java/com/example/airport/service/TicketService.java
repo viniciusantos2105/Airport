@@ -1,6 +1,6 @@
 package com.example.airport.service;
 
-import com.example.airport.adapter.TicketAdapter;
+import com.example.airport.adapter.Adapter;
 import com.example.airport.dto.ticket.TicketRegisterDTO;
 import com.example.airport.dto.ticket.TicketViewDTO;
 import com.example.airport.models.Flight;
@@ -14,17 +14,13 @@ import org.springframework.stereotype.Service;
 public class TicketService {
 
     private final VisitorService visitorService;
-
     private final FlightService flightService;
-
-    private final TicketAdapter adapter;
     private final TicketRepository repository;
 
-    public TicketService(VisitorService visitorService, FlightService flightService, TicketRepository repository, TicketAdapter adapter) {
+    public TicketService(VisitorService visitorService, FlightService flightService, TicketRepository repository) {
         this.visitorService = visitorService;
         this.flightService = flightService;
         this.repository = repository;
-        this.adapter = adapter;
     }
 
     public TicketViewDTO buyTicket(TicketRegisterDTO ticketRegisterDTO){
@@ -36,7 +32,7 @@ public class TicketService {
                 Ticket ticket = new Ticket(flightClass.getValueClass(), flight, flightClass.getClassEnum(), visitor);
                 repository.save(ticket);
                 flightService.updateSeatsFlightClass(flight, ticketRegisterDTO.getClassSelected());
-                return adapter.adapterViewTicketDTO(ticket);
+                return Adapter.mapSourceToTarget(ticket, TicketViewDTO.class);
             }
         }
         return null;

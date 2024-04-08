@@ -1,6 +1,8 @@
 package com.example.airport.service;
 
-import com.example.airport.dto.city.CityRegisterDTO;
+import com.example.airport.adapter.Adapter;
+import com.example.airport.dto.city.requests.CityRegisterDTO;
+import com.example.airport.dto.city.responses.CityRegisterResponseDTO;
 import com.example.airport.models.City;
 import com.example.airport.repository.CityRepository;
 import org.springframework.stereotype.Service;
@@ -14,9 +16,10 @@ public class CityService {
         this.cityRepository = cityRepository;
     }
 
-    public City createCity(CityRegisterDTO cityRegisterDto){
+    public CityRegisterResponseDTO createCity(CityRegisterDTO cityRegisterDto){
         City city = new City(cityRegisterDto.getNameCity(), cityRegisterDto.getFederativUnit());
-        return cityRepository.save(city);
+        cityRepository.save(city);
+        return Adapter.mapSourceToTarget(city, CityRegisterResponseDTO.class);
     }
 
     public City findById(Long id){

@@ -1,8 +1,10 @@
 package com.example.airport.controller;
 
-import com.example.airport.dto.city.CityRegisterDTO;
+import com.example.airport.dto.city.requests.CityRegisterDTO;
+import com.example.airport.dto.city.responses.CityRegisterResponseDTO;
 import com.example.airport.models.City;
 import com.example.airport.service.CityService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +23,10 @@ public class CityController {
         this.cityService = cityService;
     }
 
+    @Operation(summary = "Método de criação de cidade")
     @PostMapping("/create")
-    public ResponseEntity<City> create(@RequestBody @Valid CityRegisterDTO cityRegisterDTO){
-        City city = cityService.createCity(cityRegisterDTO);
+    public ResponseEntity<CityRegisterResponseDTO> create(@RequestBody @Valid CityRegisterDTO cityRegisterDTO){
+        CityRegisterResponseDTO city = cityService.createCity(cityRegisterDTO);
         return ResponseEntity.ok().body(city);
     }
 }

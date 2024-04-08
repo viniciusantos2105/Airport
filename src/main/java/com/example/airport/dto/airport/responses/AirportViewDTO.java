@@ -1,4 +1,4 @@
-package com.example.airport.dto.flight;
+package com.example.airport.dto.airport.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FlightPassengers {
+public class AirportViewDTO {
 
-    private long id;
+    private String nameAirport;
+    private String cityAirport;
 }

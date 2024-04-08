@@ -1,6 +1,6 @@
 package com.example.airport.service;
 
-import com.example.airport.adapter.VisitorAdapter;
+import com.example.airport.adapter.Adapter;
 import com.example.airport.dto.visitor.VisitorRegisterDTO;
 import com.example.airport.dto.visitor.VisitorViewDTO;
 import com.example.airport.models.users.Visitor;
@@ -12,17 +12,14 @@ public class VisitorService {
 
     private final VisitorRepository repository;
 
-    private final VisitorAdapter adapter;
-
-    public VisitorService(VisitorRepository repository, VisitorAdapter adapter) {
+    public VisitorService(VisitorRepository repository) {
         this.repository = repository;
-        this.adapter = adapter;
     }
 
     public VisitorViewDTO createVisitor(VisitorRegisterDTO visitorRegisterDTO){
-        Visitor visitor = adapter.adapterRegisterVisitor(visitorRegisterDTO);
+        Visitor visitor = Adapter.mapSourceToTarget(visitorRegisterDTO, Visitor.class);
         repository.save(visitor);
-        return adapter.adapterViewVisitor(visitor);
+        return Adapter.mapSourceToTarget(visitor, VisitorViewDTO.class);
     }
 
     public Visitor findVisitorById(Long idVisitor){

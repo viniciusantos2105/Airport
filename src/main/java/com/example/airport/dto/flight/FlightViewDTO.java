@@ -1,6 +1,6 @@
 package com.example.airport.dto.flight;
 
-import com.example.airport.dto.airport.AirportViewDTO;
+import com.example.airport.dto.airport.responses.AirportViewDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

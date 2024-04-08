@@ -8,6 +8,7 @@ import com.example.airport.models.Ticket;
 import com.example.airport.repository.TicketRepository;
 import com.example.airport.service.TicketService;
 import com.example.airport.service.VisitorService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,7 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
+    @Operation(summary = "Método de compra de passagem")
     @PostMapping("/create")
     public ResponseEntity<TicketViewDTO> create(@RequestBody @Valid TicketRegisterDTO ticketRegisterDTO) throws ParseException {
         TicketViewDTO ticket = ticketService.buyTicket(ticketRegisterDTO);

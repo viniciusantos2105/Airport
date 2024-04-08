@@ -1,14 +1,7 @@
 package com.example.airport.config;
 
-import com.example.airport.dto.airport.AirportViewDTO;
-import com.example.airport.dto.flight.FlightClassViewDTO;
-import com.example.airport.dto.ticket.TicketViewDTO;
-import com.example.airport.dto.visitor.VisitorViewTicketDTO;
+import com.example.airport.dto.airport.responses.AirportViewDTO;
 import com.example.airport.models.Airport;
-import com.example.airport.models.FlightClass;
-import com.example.airport.models.Ticket;
-import com.example.airport.models.users.Person;
-import com.example.airport.models.users.Visitor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
