@@ -1,15 +1,15 @@
 package com.example.airport.service;
 
 import com.example.airport.adapter.Adapter;
-import com.example.airport.dto.flight.FlightClassRegisterDTO;
-import com.example.airport.dto.flight.FlightRegisterDTO;
-import com.example.airport.dto.flight.FlightViewDTO;
-import com.example.airport.dto.flight.FlightViewListDTO;
+import com.example.airport.dto.flight.requests.FlightClassRegisterDTO;
+import com.example.airport.dto.flight.requests.FlightRegisterDTO;
+import com.example.airport.dto.flight.responses.FlightViewDTO;
+import com.example.airport.dto.flight.responses.FlightViewListDTO;
 import com.example.airport.enums.FlightClassEnum;
 import com.example.airport.models.Airport;
 import com.example.airport.models.Flight;
 import com.example.airport.models.FlightClass;
-import com.example.airport.repository.FlightRepository;
+import com.example.airport.repository.flight.FlightRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;

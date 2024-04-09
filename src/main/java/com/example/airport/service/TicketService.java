@@ -1,13 +1,13 @@
 package com.example.airport.service;
 
 import com.example.airport.adapter.Adapter;
-import com.example.airport.dto.ticket.TicketRegisterDTO;
-import com.example.airport.dto.ticket.TicketViewDTO;
+import com.example.airport.dto.ticket.requests.TicketRegisterDTO;
+import com.example.airport.dto.ticket.response.TicketViewDTO;
 import com.example.airport.models.Flight;
 import com.example.airport.models.FlightClass;
 import com.example.airport.models.Ticket;
 import com.example.airport.models.users.Visitor;
-import com.example.airport.repository.TicketRepository;
+import com.example.airport.repository.ticket.TicketRepository;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,8 +1,8 @@
 package com.example.airport.controller;
 
-import com.example.airport.dto.flight.FlightRegisterDTO;
-import com.example.airport.dto.flight.FlightViewDTO;
-import com.example.airport.dto.flight.FlightViewListDTO;
+import com.example.airport.dto.flight.requests.FlightRegisterDTO;
+import com.example.airport.dto.flight.responses.FlightViewDTO;
+import com.example.airport.dto.flight.responses.FlightViewListDTO;
 import com.example.airport.service.FlightService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

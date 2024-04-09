@@ -4,7 +4,7 @@ import com.example.airport.adapter.Adapter;
 import com.example.airport.dto.visitor.VisitorRegisterDTO;
 import com.example.airport.dto.visitor.VisitorViewDTO;
 import com.example.airport.models.users.Visitor;
-import com.example.airport.repository.VisitorRepository;
+import com.example.airport.repository.visitor.VisitorRepository;
 import org.springframework.stereotype.Service;
 
 @Service

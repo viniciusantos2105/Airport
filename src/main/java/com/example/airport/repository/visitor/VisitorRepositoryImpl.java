@@ -1,9 +1,9 @@
-package com.example.airport.repository;
+package com.example.airport.repository.visitor;
 
 import com.example.airport.models.users.Visitor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VisitorRepository extends JpaRepository<Visitor, Long> {
+public class VisitorRepositoryImpl{
 }

@@ -4,7 +4,7 @@ import com.example.airport.adapter.Adapter;
 import com.example.airport.dto.city.requests.CityRegisterDTO;
 import com.example.airport.dto.city.responses.CityRegisterResponseDTO;
 import com.example.airport.models.City;
-import com.example.airport.repository.CityRepository;
+import com.example.airport.repository.city.CityRepository;
 import org.springframework.stereotype.Service;
 
 @Service

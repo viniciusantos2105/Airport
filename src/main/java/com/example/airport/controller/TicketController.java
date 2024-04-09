@@ -1,13 +1,8 @@
 package com.example.airport.controller;
 
-import com.example.airport.dto.ticket.TicketRegisterDTO;
-import com.example.airport.dto.ticket.TicketViewDTO;
-import com.example.airport.dto.visitor.VisitorRegisterDTO;
-import com.example.airport.dto.visitor.VisitorViewDTO;
-import com.example.airport.models.Ticket;
-import com.example.airport.repository.TicketRepository;
+import com.example.airport.dto.ticket.requests.TicketRegisterDTO;
+import com.example.airport.dto.ticket.response.TicketViewDTO;
 import com.example.airport.service.TicketService;
-import com.example.airport.service.VisitorService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

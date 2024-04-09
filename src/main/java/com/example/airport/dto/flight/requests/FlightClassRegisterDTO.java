@@ -1,4 +1,4 @@
-package com.example.airport.dto.flight;
+package com.example.airport.dto.flight.requests;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package com.example.airport.dto.flight;
+package com.example.airport.dto.flight.responses;
 
 import com.example.airport.dto.airport.responses.AirportViewDTO;
 import lombok.AllArgsConstructor;

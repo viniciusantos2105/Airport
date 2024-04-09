@@ -1,4 +1,4 @@
-package com.example.airport.dto.flight;
+package com.example.airport.dto.flight.responses;
 
 import com.example.airport.enums.FlightClassEnum;
 import lombok.AllArgsConstructor;

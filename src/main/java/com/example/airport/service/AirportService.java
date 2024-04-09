@@ -6,7 +6,7 @@ import com.example.airport.dto.airport.responses.AirportRegisterResponseDTO;
 import com.example.airport.dto.airport.responses.AirportViewDTO;
 import com.example.airport.models.Airport;
 import com.example.airport.models.City;
-import com.example.airport.repository.AirportRepository;
+import com.example.airport.repository.airport.AirportRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

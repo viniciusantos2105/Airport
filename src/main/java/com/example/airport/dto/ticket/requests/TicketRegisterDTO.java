@@ -1,4 +1,4 @@
-package com.example.airport.dto.ticket;
+package com.example.airport.dto.ticket.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
